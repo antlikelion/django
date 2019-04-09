@@ -28,3 +28,12 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    # def __str__(self):
+    #     return self.review
+
+    # def __str__(self):
+    #     return self.score
+
+    # def __str__(self):
+    #     return self.price

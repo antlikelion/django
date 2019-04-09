@@ -9,13 +9,28 @@
   <body>
     <h1>책의 리뷰를 작성해주세요</h1>
     <h2>리뷰 목록</h2>
-    {% for post in posts %}
-    <li>
-      <a href="{% url 'detail' post.pk %}">{{ post.title }}</a>
-      <!-- 여기서 post.pk의 역할은 무엇이죠? -->
-    </li>
+    <table>
+      <tr>
+        <th>제목</th>
+        <th>리뷰</th>
+        <th>평점</th>
+        <th>가격(원)</th>
+      </tr>
+      {% for post in posts %}
+      <tr>
+        <td>
+          <a href="{% url 'detail' post.pk %}">{{ post.title }}</a>
+          <!-- 여기서 post.pk의 역할은 무엇이죠? -->
+        </td>
+        <td style="max-width: 500px;">{{ post.review }}</td>
+        <td>{{ post.score }}</td>
+        <td>{{ post.price }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
     <br />
-    {% endfor %}
+
     <a href="{%url 'new' %}">리뷰 작성하러 가기</a>
   </body>
 </html>
