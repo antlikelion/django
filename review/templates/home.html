@@ -1,36 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+  {% load staticfiles %}
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
-    <h1>책의 리뷰를 작성해주세요</h1>
-    <h2>리뷰 목록</h2>
-    <table>
+    <div class="navbar">
+      <div class="logo">
+        <i class="fas fa-book"></i>
+        <p class="title">BOOK REVIEW</p>
+      </div>
+      <div class="create">
+        <a href="{%url 'new' %}">리뷰 작성하러 가기</a>
+      </div>
+    </div>
+    <div class="main">
+      {% for post in posts %}
+      <div class="new">
+        <div class="top">
+          <i class="fas fa-book-open"></i>
+          <!-- {% if post.image %}
+          <img src="{{ post.image.url }}" />
+          {% endif %} -->
+        </div>
+        <div class="bottom">
+          <a href="{% url 'detail' post.pk %}">{{ post.title }}</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- <table>
       <tr>
         <th>제목</th>
         <th>리뷰</th>
         <th>평점</th>
         <th>가격(원)</th>
       </tr>
+
       {% for post in posts %}
       <tr>
         <td>
           <a href="{% url 'detail' post.pk %}">{{ post.title }}</a>
-          <!-- 여기서 post.pk의 역할은 무엇이죠? -->
         </td>
         <td style="max-width: 500px;">{{ post.review }}</td>
         <td>{{ post.score }}</td>
         <td>{{ post.price }}</td>
       </tr>
       {% endfor %}
-    </table>
-
-    <br />
-
-    <a href="{%url 'new' %}">리뷰 작성하러 가기</a>
+      
+    </table> -->
   </body>
 </html>

@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+  {% load staticfiles %}
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'new.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
+    <div class="navbar">
+      <div class="logo">
+        <i class="fas fa-book"></i>
+        <p class="title">BOOK REVIEW</p>
+      </div>
+      <div class="create">
+        <a href="{% url 'home' %}">리뷰 목록으로 돌아가기</a>
+      </div>
+    </div>
     <h1>리뷰를 작성해주세요!</h1>
     <form method="POST">
       <!-- 왜 post방식으로 받는거죠? -->
@@ -14,7 +31,7 @@
       <!-- 윗 문장의 역할이 뭐죠? -->
       {{ form.as_p }}
       <!-- form을 p태그의 형태로 받는다는 것이 맞나요? -->
-      <button type="submit">제출 !</button>
+      <button type="submit">게시하기</button>
     </form>
   </body>
 </html>

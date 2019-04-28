@@ -7,37 +7,31 @@ from django.utils import timezone
 class Post(models.Model):
     title = models.CharField(max_length=200)
     review = models.TextField()
-    BEST = "5"
-    GOOD = "4"
-    SOSO = "3"
-    BAD = "2"
-    WORST = "1"
+    BEST = "☆☆☆☆☆"
+    GOOD = "☆☆☆☆"
+    SOSO = "☆☆☆"
+    BAD = "☆☆"
+    WORST = "☆"
     SCORE_CHOICES = (
-        (BEST, "5"),
-        (GOOD, "4"),
-        (SOSO, "3"),
-        (BAD, "2"),
-        (WORST, "1"),
+        (BEST, "☆☆☆☆☆"),
+        (GOOD, "☆☆☆☆"),
+        (SOSO, "☆☆☆"),
+        (BAD, "☆☆"),
+        (WORST, "☆"),
     )
     score = models.CharField(
-        max_length=1,
+        max_length=5,
         choices=SCORE_CHOICES,
-        default=SOSO,
+        # default=SOSO,
     )
     price = models.IntegerField()
     created_date = models.DateTimeField(default=timezone.now)
+    writer = models.CharField(max_length=200)
+    publisher = models.CharField(
+        max_length=20,
+    )
 
-    # def is_upperclass(self):
-    #     return self.score in (self.GOOD, self.SOSO, self.BAD)
+    # image = models.ImageField(upload_to="profile_image", blank=True)
 
     def __str__(self):
         return self.title
-
-    # def __str__(self):
-    #     return self.review
-
-    # def __str__(self):
-    #     return self.score
-
-    # def __str__(self):
-    #     return self.price
