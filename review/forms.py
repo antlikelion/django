@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post
+from .models import Post, Comment
 # 모듈 import방식 참조
 
 
@@ -9,3 +9,8 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('title', 'review', 'score', 'price', 'writer', 'publisher', )
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model=Comment
+        fields=('content',)

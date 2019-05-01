@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}?v=0.5" />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
@@ -29,9 +29,6 @@
       <div class="new">
         <div class="top">
           <i class="fas fa-book-open"></i>
-          <!-- {% if post.image %}
-          <img src="{{ post.image.url }}" />
-          {% endif %} -->
         </div>
         <div class="bottom">
           <a href="{% url 'detail' post.pk %}">{{ post.title }}</a>
@@ -39,26 +36,5 @@
       </div>
       {% endfor %}
     </div>
-
-    <!-- <table>
-      <tr>
-        <th>제목</th>
-        <th>리뷰</th>
-        <th>평점</th>
-        <th>가격(원)</th>
-      </tr>
-
-      {% for post in posts %}
-      <tr>
-        <td>
-          <a href="{% url 'detail' post.pk %}">{{ post.title }}</a>
-        </td>
-        <td style="max-width: 500px;">{{ post.review }}</td>
-        <td>{{ post.score }}</td>
-        <td>{{ post.price }}</td>
-      </tr>
-      {% endfor %}
-      
-    </table> -->
   </body>
 </html>

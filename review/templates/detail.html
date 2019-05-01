@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'detail.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'detail.css' %}?v=0.5" />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
@@ -36,5 +36,18 @@
     <div class="bottom">
       <p class="review">{{ post.review }}</p>
     </div>
+    <ul>
+      {% for comment in post.comments.all %}
+      <li>
+        <p class="comment"><i class="far fa-comment-alt"></i> : {{ comment.content }}<a href="{% url 'delete_comment' post.pk comment.pk %}" class="comment"><i class="fas fa-backspace"></i></a></p>
+      </li>
+      {% endfor %}
+    </ul>
+    <form method="POST">
+      {% csrf_token %}
+      <textarea name="content" cols="100" rows="3" ></textarea>
+      {% comment %} {{ form.as_p }} {% endcomment %}
+      <button type="submit" class="comment" >comment</button>
+    </form>
   </body>
 </html>
