@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}?v=0.5" />
+    <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}" />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
@@ -28,7 +28,7 @@
       {% for post in posts %}
       <div class="new">
         <div class="top">
-          <i class="fas fa-book-open"></i>
+          <img src="{{ post.img.url }}" />
         </div>
         <div class="bottom">
           <a href="{% url 'detail' post.pk %}">{{ post.title }}</a>

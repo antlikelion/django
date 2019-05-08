@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'new.css' %}?v=0.5" />
+    <link rel="stylesheet" type="text/css" href="{% static 'new.css' %}" />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
@@ -25,7 +25,7 @@
       </div>
     </div>
     <h1>리뷰를 작성해주세요!</h1>
-    <form method="POST">
+    <form method="POST" enctype='multipart/form-data'>
       <!-- 왜 post방식으로 받는거죠? -->
       {% csrf_token %}
       <!-- 윗 문장의 역할이 뭐죠? -->

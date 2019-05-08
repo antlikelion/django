@@ -50,9 +50,11 @@ p.title {
 }
 
 p.review {
-  width: 95%;
+  width: 1000px;
   white-space: pre-wrap;
   color: white;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 div.main {
@@ -116,4 +118,11 @@ button.comment {
 
 textarea {
   border-radius: 20px;
+}
+
+img {
+  margin-top: 20px;
+  margin-left: 50px;
+  width: 200px;
+  height: 260px;
 }

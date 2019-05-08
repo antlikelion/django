@@ -12,9 +12,10 @@ def home(request):
 
 def new(request):
     if request.method == 'POST':
-        form = PostForm(request.POST)
+        form = PostForm(request.POST, request.FILES)
         post = form.save(commit=False)
         form.save()
+        # post.save()?
         return redirect('detail', post_pk=post.pk)
     else:
         form = PostForm()
@@ -39,7 +40,7 @@ def detail(request, post_pk):
 def edit(request, post_pk):
     post = Post.objects.get(pk=post_pk)
     if request.method == 'POST':
-        form = PostForm(request.POST, instance=post)
+        form = PostForm(request.POST, request.FILES, instance=post)
         post = form.save(commit=False)
         form.save()
         return redirect('detail', post.pk)

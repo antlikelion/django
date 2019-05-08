@@ -31,11 +31,15 @@ class Post(models.Model):
         max_length=20,
     )
 
+    img = models.FileField(null=True)
+
     # image = models.ImageField(upload_to="profile_image", blank=True)
 
     def __str__(self):
         return self.title
 
+
 class Comment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
-    content=models.TextField()
+    post = models.ForeignKey(
+        Post, on_delete=models.CASCADE, related_name='comments')
+    content = models.TextField()
