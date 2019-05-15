@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   {% load staticfiles %}
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,6 +15,7 @@
       crossorigin="anonymous"
     />
   </head>
+
   <body>
     <div class="navbar">
       <div class="logo">
@@ -21,9 +23,11 @@
         <p class="title">BOOK REVIEW</p>
       </div>
       <div class="create">
-        <a href="{% url 'home' %}">리뷰 목록으로 돌아가기</a>
+        {% if user.is_authenticated and post.author == user.username %}
         <a href="{% url 'edit' post.pk %}">수정하기</a>
         <a href="{% url 'delete' post.pk %}">삭제</a>
+        {% endif %}
+        <a href="{% url 'home' %}">리뷰 목록으로 돌아가기</a>
       </div>
     </div>
     <h1>{{ post.title }}</h1>
@@ -34,21 +38,23 @@
       <h3>가격 : {{ post.price }}</h3>
     </div>
     <div class="bottom">
-      <img src="{{ post.img.url }}"/>
+      <img src="{{ post.img.url }}" />
       <p class="review">{{ post.review }}</p>
     </div>
     <ul>
       {% for comment in post.comments.all %}
       <li>
-        <p class="comment"><i class="far fa-comment-alt"></i> : {{ comment.content }}<a href="{% url 'delete_comment' post.pk comment.pk %}" class="comment"><i class="fas fa-backspace"></i></a></p>
+        <p class="comment">
+          <i class="far fa-comment-alt"></i> : {{ comment.content }} {% if user.is_authenticated and comment.author == user.username %}<a href="{% url 'delete_comment' post.pk comment.pk %}" class="comment"><i class="fas fa-backspace"></i></a>{% endif %}
+        </p>
       </li>
       {% endfor %}
     </ul>
     <form method="POST">
       {% csrf_token %}
-      <textarea name="content" cols="100" rows="3" ></textarea>
+      <textarea name="content" cols="100" rows="3"></textarea>
       {% comment %} {{ form.as_p }} {% endcomment %}
-      <button type="submit" class="comment" >comment</button>
+      <button type="submit" class="comment">comment</button>
     </form>
   </body>
 </html>

@@ -35,6 +35,7 @@ p.title {
 .create {
   display: flex;
   flex-direction: row;
+  justify-content: flex-end;
   align-items: center;
 }
 
@@ -103,9 +104,9 @@ a.comment:hover {
   opacity: 1;
 }
 
-p.comment {
+/* p.comment {
   white-space: pre-wrap;
-}
+} */
 
 button.comment {
   height: 50px;

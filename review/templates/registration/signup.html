@@ -1,0 +1,27 @@
+{% comment %} {% extends "home.html" %} {% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    {% comment %} {% block content %} {% endcomment %}
+    <div class="category">Signup</div>
+    {% if error %}
+    {{ error }}
+    {% endif %}
+    <div class="Signup_form">
+      <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% comment %} <input type="text" name="username" placeholder="username" />
+        <input type="password" name="password" placeholder="password" /> {% endcomment %}
+        <input type="submit" value="확인" />
+      </form>
+    </div>
+    {% comment %} {% endblock %} {% endcomment %}
+  </body>
+</html>

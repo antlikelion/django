@@ -1,5 +1,6 @@
 from django import forms
 from .models import Post, Comment
+from django.contrib.auth.models import User
 # 모듈 import방식 참조
 
 
@@ -16,3 +17,12 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('content',)
+
+
+class UserForm(forms.ModelForm):
+
+    class Meta:
+        model = User
+        fields = ('username', 'password',)
+        labels = {'username': 'ID(E-mail)', }
+        widgets = {'password': forms.PasswordInput(), }

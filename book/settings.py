@@ -60,7 +60,7 @@ ROOT_URLCONF = 'book.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -139,3 +139,7 @@ AWS_SECRET_ACCESS_KEY = secrets['AWS']['SECRET_ACCESS_KEY']
 AWS_STORAGE_BUCKET_NAME = secrets['AWS']['STORAGE_BUCKET_NAME']
 AWS_S3_SIGNATURE_VERSION = "s3v4"
 AWS_S3_REGION_NAME = 'ap-northeast-2'
+
+LOGIN_REDIRECT_URL='/'
+
+LOGOUT_REDIRECT_URL='/'

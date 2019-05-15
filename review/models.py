@@ -32,6 +32,7 @@ class Post(models.Model):
     )
 
     img = models.FileField(null=True)
+    author=models.CharField(max_length=50, default="")
 
     # image = models.ImageField(upload_to="profile_image", blank=True)
 
@@ -43,3 +44,4 @@ class Comment(models.Model):
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name='comments')
     content = models.TextField()
+    author=models.CharField(max_length=50, default="")
